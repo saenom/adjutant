@@ -1,0 +1,224 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+#  Include:
+#    - Rakefile
+#    - lib/**/*
+#    - app/**/*.rb
+#    - spec/**/*
+#    - config/**/*.rb
+  Exclude:
+    - vendor/**/*
+    - node_modules/**/*
+    - Gemfile
+    - bin/**/*
+    - db/schema.rb
+
+Rails:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+# Avoid long parameter lists
+Metrics/ParameterLists:
+  Max: 4
+  CountKeywordArgs: true
+
+Metrics/ClassLength:
+  Max: 150
+
+Layout/LineLength:
+  Max: 122
+#  Exclude:
+#    - config/initializers/simple_form_bootstrap.rb
+#    - config/initializers/simple_form.rb
+
+
+# Avoid more than `Max` levels of nesting.
+Metrics/BlockNesting:
+  Max: 2
+
+Metrics/MethodLength:
+  Max: 18
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Layout/ParameterAlignment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Style/SignalException:
+  Enabled: false
+
+Style/TrivialAccessors:
+  Enabled: false
+
+Validation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Description: 'Prefer has_many :through to has_and_belongs_to_many.'
+  Enabled: false
+
+Layout/SpaceInLambdaLiteral:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+  IndentationWidth: 2
+
+Layout/MultilineOperationIndentation:
+  Enabled: false
+  EnforcedStyle: indented
+  IndentationWidth: 2
+
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: false
+
+Layout/MultilineHashBraceLayout:
+  Enabled: false
+
+Layout/MultilineArrayBraceLayout:
+  Enabled: false
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Performance/RedundantMerge:
+  Enabled: true
+
+Performance/StringReplacement:
+  Enabled: true
+
+Performance/Casecmp:
+  Enabled: true
+
+Lint/RedundantSplatExpansion:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - spec/**/*
+    - config/environments/*.rb
+    - config/initializers/simple_form_bootstrap.rb
+    - config/routes.rb
+
+Rails/TimeZone:
+  Enabled: false
+
+Rails/Date:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: true
+  PreferredDelimiters:
+    default: '()'
+    '%i': '()'
+    '%I': '()'
+    '%r': '()'
+    '%w': '()'
+    '%W': '()'
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/MultilineIfModifier:
+  Enabled: false
+
+Style/ZeroLengthPredicate:
+  Enabled: false
+
+Style/MethodMissingSuper:
+  Enabled: false
+
+Style/MissingRespondToMissing:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
+Style/TernaryParentheses:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+Metrics/ModuleLength:
+  CountComments: false
+  Max: 120

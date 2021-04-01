@@ -1,0 +1,17 @@
+defaults: &defaults
+  social_networks:
+    - name: twitter
+      url: https://takehome.io/twitter
+    - name: facebook
+      url: https://takehome.io/facebook
+    - name: instagram
+      url: https://takehome.io/instagram
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
