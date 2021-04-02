@@ -6,11 +6,22 @@ RSpec.describe 'HomeController', type: :request do
 
     let(:send_request) { get '/', params: {}, as: :json }
 
-    context 'when there is not settings' do
-      before do
-        allow(Settingslogic).to receive(:source).and_return({})
-        Settings.reload!
+    context 'when there is no settings' do
+      before { allow(Settingslogic).to receive(:method_missing).and_return(nil) }
+
+      it 'returns 500' do
+        send_request
+        expect(response).to have_http_status(:internal_server_error)
       end
+
+      it 'has a error body' do
+        send_request
+        expect(json_body).to have_key('error')
+      end
+    end
+
+    context 'with empty social network array' do
+      before { allow(Settingslogic).to receive(:method_missing).and_return([]) }
 
       it 'returns 500' do
         send_request
@@ -25,9 +36,6 @@ RSpec.describe 'HomeController', type: :request do
 
     context 'when social networks are set up' do
       before do
-        allow(Settingslogic).to receive(:source).and_return(Rails.root.join('config', 'application.yml'))
-        Settings.reload!
-
         response = Typhoeus::Response.new(code: 200, body: "{'name' : 'paul'}")
         Settings.social_networks.map(&:symbolize_keys).each do |social_network|
           Typhoeus.stub(social_network[:url]).and_return(response)
