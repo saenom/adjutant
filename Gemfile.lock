@@ -108,6 +108,7 @@ GEM
     marcel (1.0.0)
     method_source (1.0.0)
     mini_mime (1.0.3)
+    mini_portile2 (2.8.8)
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
@@ -212,7 +213,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
+    sqlite3 (1.6.9)
+      mini_portile2 (~> 2.8.0)
     thor (1.1.0)
     timecop (0.9.4)
     typhoeus (1.4.0)
@@ -259,7 +261,7 @@ DEPENDENCIES
   selenium-webdriver
   settingslogic
   spring
-  sqlite3 (~> 1.4)
+  sqlite3
   timecop
   typhoeus
   tzinfo-data
