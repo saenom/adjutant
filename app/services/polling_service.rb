@@ -1,10 +1,6 @@
 class PollingService < Interactor::Simple
   def execute
-    begin
-      social_networks = Settings.social_networks&.map(&:symbolize_keys)
-    rescue Settingslogic::MissingSetting => e
-      fail!(base: e.message)
-    end
+    social_networks = Settings.social_networks&.map(&:symbolize_keys)
 
     fail!(base: 'The list of social networks is missing!') if social_networks.blank?
 
