@@ -10,22 +10,12 @@ class PollingService < Interactor::Simple
   private
 
   def run_requests(social_networks)
-    requests = {}
-
     hydra = Typhoeus::Hydra.hydra
+    requests = social_networks.to_h { |network| [network[:name], Typhoeus::Request.new(network[:url])] }
 
-    social_networks.map(&:symbolize_keys).each do |name:, url:|
-      request = Typhoeus::Request.new(url)
-      requests[name] = request
-      hydra.queue(request)
-    end
-
+    requests.each_value { |request| hydra.queue(request) }
     hydra.run
 
-    {}.tap do |result|
-      requests.each do |name, request|
-        result[name] = request.response.body
-      end
-    end
+    requests.transform_values { |request| request.response.body.freeze }
   end
 end
